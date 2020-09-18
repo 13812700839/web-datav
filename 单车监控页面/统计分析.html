@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新能源汽车大数据分析系统——研发与维修</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <!--导航和LOGO区域(header) -->
+        <div class="nav">
+            <div class="fl clearfix">
+                <div class="fl nav-left  active">
+                    <span>研发与维修</span>
+                </div>
+                <div href="" class="fl nav-left ">
+                    <span>车辆销售</span>
+                </div>
+                <div href="" class="fl nav-left ">
+                    <span>车队管理</span>
+                </div>
+            </div>
+        </div>
+        <div class="logo pr">
+            <span><img src="./img/leftline.png"></span>
+            <img src="./img/logotext.png" class="img">
+            <span><img src="./img/rightline.png"></span>
+            <ul class="menu">
+                <li class="list">
+                    <a href="#">数据大屏</a>
+                </li>
+                <li class="active list">
+                    <a href="#">统计分析</a>
+                </li>
+                <li class="list">
+                    <a href="#">单车监控</a>
+                </li>
+                <li class="list">
+                    <a href="#">车辆管理</a>
+                </li>
+                <li class="list">
+                    <a href="#">用户管理</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="maincontent">
+        <div class="search">
+            <!--查询区域(search)-->
+            <div class="search pr">
+                <div class="search-contnet clearfix boxshadow ">
+                    <div class="fl search-box">
+                        <span>时间</span>
+                        <!--<input id="date" type="text" value="开始时间 - 结束时间">-->
+                        <input id="date" type="text" value="yyyy-MM-dd - yyyy-MM-dd">
+                    </div>
+                    <div class="fl search-btn">
+                        查询
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="datav-content">
+            <!--数据区域(datav-content)-->
+            <div class="datav-content clearfix">
+                <div class="datav-item">
+                    <div class="datav-box">
+                        <p class="datav-title">新增故障比例</p>
+                    </div>
+                </div>
+                <div class="datav-item">
+                    <div class="datav-box">
+                        <p class="datav-title">新增故障数量</p>
+                    </div>
+                </div>
+                <div class="datav-item">
+                    <div class="datav-box">
+                        <p class="datav-title">能耗统计数据</p>
+                    </div>
+                </div>
+                <div class="datav-item">
+                    <div class="datav-box">
+                        <p class="datav-title">蓄电池平均电流电压</p>
+                    </div>
+                </div>
+                <div class="datav-item">
+                    <div class="datav-box">
+                        <p class="datav-title">车辆城市分布Top 10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/laydate/laydate.js"></script>
+    <script>
+        var date = document.getElementById('#date');
+        // date.onclick = function() {
+        //     date.value = "";
+        // }
+        laydate.render({
+            elem: '#date',
+            range: true
+        });
+    </script>
+</body>
+
+</html>
