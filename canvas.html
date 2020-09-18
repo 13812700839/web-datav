@@ -1,0 +1,40 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-14 20:11:10
+ * @LastEditTime: 2020-09-14 20:51:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \web-datav\canvas.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="200" height="200" style="border: solid 1px
+            red;">
+            您的浏览器不支持canvas，建议使用最新版的Chrome
+        </canvas>
+    <script>
+        // 找到画布
+        var c = document.getElementById("myCanvas");
+        // 获取该canvas的 2D 绘图环境对象
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        // 圆函数   arc(左边距, 上边距, 半径, ?, 周长)
+        ctx.arc(100, 95, 50, 0, 2 * Math.PI);
+        ctx.stroke();
+        // 长方形函数   strokeRect(左边距, 上边距, 宽度, 高度)
+        ctx.strokeRect(30, 145, 120, 30);
+        ctx.strokeRect(30, 30, 20, 115);
+        ctx.strokeRect(50, 30, 120, 15);
+        ctx.strokeRect(150, 45, 20, 130);
+    </script>
+</body>
+
+</html>
