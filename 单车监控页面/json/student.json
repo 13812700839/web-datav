@@ -1,0 +1,11 @@
+{
+    "name": "彭长超",
+    "sex": "男",
+    "age": 20,
+    "birthday": "2001-08",
+    "isPartyMember": false,
+    "school": "苏州工业职业技术学院",
+    "hobbies": [
+        "篮球", "漫画", "旅游"
+    ]
+}

@@ -1,0 +1,25 @@
+[{
+        "name": "张伟",
+        "age": 27,
+        "fixedCarNumber": 45,
+        "score": 9.2
+    },
+    {
+        "name": "李祥",
+        "age": 31,
+        "fixedCarNumber": 56,
+        "score": 8.5
+    },
+    {
+        "name": "李飞",
+        "age": 28,
+        "fixedCarNumber": 78,
+        "score": 9.9
+    },
+    {
+        "name": "王刚",
+        "age": 36,
+        "fixedCarNumber": 69,
+        "score": 8.7
+    }
+]
