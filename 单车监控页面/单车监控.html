@@ -78,11 +78,72 @@
                 <div class="datav-item">
                     <div class="datav-box">
                         <p class="datav-title">车辆数据</p>
+                        <table>
+                            <tr>
+                                <td>车速</td>
+                                <td>电机转速1</td>
+                                <td>电机转速2</td>
+                                <td>仪表转速</td>
+                                <td>油门开度</td>
+                            </tr>
+                            <tr>
+                                <td>35km/h</td>
+                                <td>3600rpm</td>
+                                <td>3600rpm</td>
+                                <td>--</td>
+                                <td>30%</td>
+                            </tr>
+                            <tr>
+                                <td>刹车开度</td>
+                                <td>舱门状态</td>
+                                <td>档位</td>
+                                <td>前气压值</td>
+                                <td>后气压值</td>
+                            </tr>
+                            <tr>
+                                <td>50%</td>
+                                <td>关闭</td>
+                                <td>前进D</td>
+                                <td>1MPa</td>
+                                <td>2MPa</td>
+                            </tr>
+                            <tr>
+                                <td>柱气压值</td>
+                                <td>前门状态</td>
+                                <td>DCDC故障</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2MPa</td>
+                                <td>关闭</td>
+                                <td>正常</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="datav-item">
                     <div class="datav-box">
                         <p class="datav-title">车辆速度</p>
+                        <div class="echart-item" id="echart1">
+                            <div id="chartbox"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="datav-item">
@@ -108,6 +169,13 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="./js/barchart.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            showData(jsonArr);
+        }
+    </script>
 
 </body>
 
