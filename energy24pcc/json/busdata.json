@@ -1,0 +1,15 @@
+{
+    "speed": "35km/h",
+    "motorSpeed1": "3600rpm",
+    "motorSpeed2": "3600rpm",
+    "instrumentSpeed": "--",
+    "throttleOpening": "30%",
+    "breakOpening": "50%",
+    "portState": "关闭",
+    "gear": "前进D",
+    "beforeAirPressure": "1MPa",
+    "afterAirPressure": "2MPa",
+    "columnGasPressure": "2MPa",
+    "frontDoorStatus": "关闭",
+    "DCDCFailure": "正常"
+}

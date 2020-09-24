@@ -1,0 +1,95 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-21 19:37:25
+ * @LastEditTime: 2020-09-24 00:56:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \energy24pcc\单车监控2.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <div class="datav-item">
+        <div class="datav-box">
+            <p class="datav-title">车辆数据</p>
+            <table>
+                <tr>
+                    <td>车速</td>
+                    <td>电机转速1</td>
+                    <td>电机转速2</td>
+                    <td>仪表转速</td>
+                    <td>油门开度</td>
+                </tr>
+                <tr>
+                    <td>刹车开度</td>
+                    <td>舱门状态</td>
+                    <td>档位</td>
+                    <td>前气压值</td>
+                    <td>后气压值</td>
+                </tr>
+                <tr>
+                    <td>柱气压值</td>
+                    <td>前门状态</td>
+                    <td>DCDC故障</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: "./json/busdata.json", //json文件位置
+            type: "GET", //请求方式为get
+            dataType: "json", //返回数据格式为json
+            success: function(data) {
+                //请求成功完成后要执行的方法
+                var datas = [
+                    [
+                        data.speed,
+                        data.motorSpeed1,
+                        data.motorSpeed2,
+                        data.instrumentSpeed,
+                        data.throttleOpening,
+                    ],
+                    [
+                        data.breakOpening,
+                        data.portState,
+                        data.gear,
+                        data.beforeAirPressure,
+                        data.afterAirPressure,
+                    ],
+                    [data.columnGasPressure, data.frontDoorStatus, data.DCDCFailure, null, null],
+                ];
+                for (var i = 0, j = 0; j < datas.length; i += 2, j++) {
+                    $("tr")[i].after(createTr(datas[j]));
+                }
+            },
+            error: function() {
+                alert("出错");
+            },
+        });
+
+        function createTr(datas) {
+            var tr = document.createElement("tr");
+            for (data of datas) {
+                var td = document.createElement("td");
+                td.innerHTML = data;
+                tr.append(td);
+            }
+            return tr;
+        }
+    </script>
+</body>
+
+</html>

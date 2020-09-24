@@ -1,0 +1,90 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-24 00:19:00
+ * @LastEditTime: 2020-09-24 01:20:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \energy24pcc\about.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        p {
+            text-align: center;
+        }
+        
+        div {
+            background-color: blue;
+            display: table;
+            margin: auto;
+            text-align: center;
+        }
+        
+        td {
+            padding: 3px 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>个人信息</p>
+    <div>
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td>学号</td>
+                <td>班级名称</td>
+                <td>系部名称</td>
+            </tr>
+            <tr>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>学校名称</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: "./json/data.json",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                var datas = [
+                    [data.name, data.stuId, data.className, data.deptName],
+                    [data.age, data.sex, data.school, null]
+                ];
+                for (i = 0, j = 0; j < datas.length; i += 2, j++) {
+                    $('tr')[i].after(createTr(datas[j]));
+                }
+                $('tr:odd').css('background', 'cyan');
+                $('tr:even').css('font-weight', 'bold');
+                $('tr:even').css({
+                    color: 'gray',
+                    background: 'lightblue'
+                });
+            },
+            error: function() {
+                alert('出错');
+            }
+        })
+
+        function createTr(datas) {
+            var tr = document.createElement('tr');
+            for (data of datas) {
+                var td = document.createElement('td');
+                td.innerHTML = data;
+                tr.append(td);
+            }
+            return tr;
+        }
+    </script>
+</body>
+
+</html>
