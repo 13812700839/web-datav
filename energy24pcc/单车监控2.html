@@ -48,37 +48,39 @@
 
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
-        $.ajax({
-            url: "./json/busdata.json", //json文件位置
-            type: "GET", //请求方式为get
-            dataType: "json", //返回数据格式为json
-            success: function(data) {
-                //请求成功完成后要执行的方法
-                var datas = [
-                    [
-                        data.speed,
-                        data.motorSpeed1,
-                        data.motorSpeed2,
-                        data.instrumentSpeed,
-                        data.throttleOpening,
-                    ],
-                    [
-                        data.breakOpening,
-                        data.portState,
-                        data.gear,
-                        data.beforeAirPressure,
-                        data.afterAirPressure,
-                    ],
-                    [data.columnGasPressure, data.frontDoorStatus, data.DCDCFailure, null, null],
-                ];
-                for (var i = 0, j = 0; j < datas.length; i += 2, j++) {
-                    $("tr")[i].after(createTr(datas[j]));
-                }
-            },
-            error: function() {
-                alert("出错");
-            },
-        });
+        window.onload = function() {
+            $.ajax({
+                url: "./json/busdata.json", //json文件位置
+                type: "GET", //请求方式为get
+                dataType: "json", //返回数据格式为json
+                success: function(data) {
+                    //请求成功完成后要执行的方法
+                    var datas = [
+                        [
+                            data.speed,
+                            data.motorSpeed1,
+                            data.motorSpeed2,
+                            data.instrumentSpeed,
+                            data.throttleOpening,
+                        ],
+                        [
+                            data.breakOpening,
+                            data.portState,
+                            data.gear,
+                            data.beforeAirPressure,
+                            data.afterAirPressure,
+                        ],
+                        [data.columnGasPressure, data.frontDoorStatus, data.DCDCFailure, null, null],
+                    ];
+                    for (var i = 0, j = 0; j < datas.length; i += 2, j++) {
+                        $("tr")[i].after(createTr(datas[j]));
+                    }
+                },
+                error: function() {
+                    alert("出错");
+                },
+            });
+        }
 
         function createTr(datas) {
             var tr = document.createElement("tr");
