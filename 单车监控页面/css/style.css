@@ -17,7 +17,7 @@ body {
     line-height: 1.5;
     position: fixed;
     overflow-y: auto;
-    background: url(./resource/true.3957df7.png) #142437 center 0 no-repeat;
+    background: url(../img/true.3957df7.png) #142437 center 0 no-repeat;
     background-size: cover;
 }
 
@@ -96,7 +96,7 @@ input {
     height: 55px;
     text-align: center;
     position: relative;
-    background: url(./resource/titlebg.png) 0% 0% no-repeat padding-box border-box scroll;
+    background: url(../img/titlebg.png) 0% 0% no-repeat padding-box border-box scroll;
     background-size: 100%;
 }
 
