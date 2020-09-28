@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="datav-content">
+        <div class="datav-content" id="datav-content">
             <!--数据区域(datav-content)-->
             <div class="datav-content clearfix">
                 <div class="datav-item">
@@ -87,8 +87,8 @@
                                 <td>油门开度</td>
                             </tr>
                             <tr>
-                                <td>35km/h</td>
-                                <td>3600rpm</td>
+                                <td>{{speed}}km/h({{speed>150?'超速':'正常'}})</td>
+                                <td>{{motorSpeed1}}rpm({{motorSpeed1>4000?'异常':'正常'}})</td>
                                 <td>3600rpm</td>
                                 <td>--</td>
                                 <td>30%</td>
@@ -171,10 +171,18 @@
     </div>
 
     <script type="text/javascript" src="./js/barchart.js"></script>
+    <script type="text/javascript" src="./js/vue@2.6.12.js"></script>
     <script type="text/javascript">
         window.onload = function() {
             showData(jsonArr);
         }
+        new Vue({
+            el: '#datav-content',
+            data: {
+                speed: 35,
+                motorSpeed1: 3600
+            }
+        });
     </script>
 
 </body>

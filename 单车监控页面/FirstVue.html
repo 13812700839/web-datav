@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Hello World!</h1>
+        <!--插值表达式-->
+        <h1>{{message}}</h1>
+        <!--v-text 不解析html标记输出纯文本-->
+        <div v-text="message"></div>
+        <!--v-html 解析html标记输出纯文本-->
+        <div v-html="message1"></div>
+        <!--插值表达式的运算效果-->
+        <h1>{{num1+num2}}</h1>
+        <h1>{{title}}</h1>
+        <ul>
+            <li>{{names[0]}}{{values[0]}}</li>
+            <li>{{names[1]}}{{values[1]}}</li>
+            <li>{{names[2]}}{{values[2]}}</li>
+            <li>{{names[3]}}{{values[3]}}</li>
+        </ul>
+        <h2>{{total}}{{values[0]+values[1]+values[2]+values[3]}}</h2>
+        <h1></h1>
+    </div>
+
+    <script type="text/javascript" src="./js/vue@2.6.12.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app', //vue 实例的挂载点
+            data: {
+                message: 'Hello World!', //vue 实例的数据
+                message1: "<h3>Hello World!</h3>",
+                num1: 10,
+                num2: 11,
+                title: '我本月的生活费清单',
+                names: ['餐费：', '饮料：', '话费：', '其他：'],
+                values: [700, 200, 100, 200],
+                total: '总计：'
+            }
+        });
+    </script>
+</body>
+
+</html>
