@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <ul>
+            <li>
+                <h3>{{name[0]}}<input v-model.number.lazy=value[0]></h3>
+            </li>
+            <li>
+                <h3>{{name[1]}}<input v-model.number.lazy=value[1]></h3>
+            </li>
+            <li>
+                <h3>{{name[2]}}<input v-model.number.lazy=value[2]></h3>
+            </li>
+            <li>
+                <h3>{{name[3]}}<input v-model.number.lazy=value[3]></h3>
+            </li>
+        </ul>
+        <h1>总计：{{sum}}</h1>
+        <h1>本月消费超支情况：{{isOver}}</h1>
+    </div>
+
+    <script src="./js/vue@2.6.12.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: '我本月的生活费清单',
+                name: [
+                    '餐费：', '饮料：', '话费：', '其他：'
+                ],
+                // value: [700, 200, 100, 200]
+                value: []
+            },
+            computed: {
+                sum: function() {
+                    var sum = 0;
+                    console.log(typeof(this.value));
+                    for (v of this.value) {
+                        sum += v;
+                    }
+                    return sum;
+                },
+                isOver: function() {
+                    return this.sum > 1000 ? '超支' : '未超支';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

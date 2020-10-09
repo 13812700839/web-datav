@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue@2.6.12.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <h2 v-html="title"></h2>
+        <ul>
+            <li>
+                <h3>餐费：<input v-model.number.lazy=food></h3>
+            </li>
+            <li>
+                <h3>饮料：<input v-model.number.lazy=drink></h3>
+            </li>
+            <li>
+                <h3>话费：<input v-model.number.lazy=telephoneBill></h3>
+            </li>
+            <li>
+                <h3>其他：<input v-model.number.lazy=other></h3>
+            </li>
+        </ul>
+        <h2>总计：{{(food+drink+telephoneBill+other)}} </h2>
+        <h2>本月消费超支情况：{{(food+drink+telephoneBill+other)>1000?'超支':'未超支'}} </h2>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: '我本月的生活费清单',
+                food: 700,
+                drink: 200,
+                telephoneBill: 100,
+                other: 200
+            }
+        })
+    </script>
+</body>
+
+</html>

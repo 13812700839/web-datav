@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a :href=url>苏州工业职业技术学院</a>
+        <p>官方网站：{{url}}</p>
+    </div>
+    <script src="./js/vue@2.6.12.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                url: 'http://www.siit.edu.cn'
+            }
+        });
+    </script>
+</body>
+
+</html>
