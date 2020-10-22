@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>车辆维修工人列表</h3>
+        <table style="border:1px solid gray">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>维修车辆</th>
+                    <th>客户评分</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(person,index) in fixedBus" :key="index">
+                    <!-- 请在此处添加v-for指令循环 -->
+                    <td>{{++index}} </td>
+                    <td>{{person.name}}</td>
+                    <td> {{person.age}}</td>
+                    <td> {{person.fixedCarNumber}}</td>
+                    <td> {{person.score}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            //此处定义维修工人车辆数据
+            fixedBus: [{
+                name: "张伟",
+                age: 27,
+                fixedCarNumber: 45,
+                score: 9.2,
+            }, {
+                name: "李祥",
+                age: 31,
+                fixedCarNumber: 56,
+                score: 8.5,
+            }, {
+                name: "李飞",
+                age: 28,
+                fixedCarNumber: 78,
+                score: 9.9,
+            }, {
+                name: "王刚",
+                age: 36,
+                fixedCarNumber: 69,
+                score: 8.7,
+            }]
+        }
+    })
+</script>
+
+</html>

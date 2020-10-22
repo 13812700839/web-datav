@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <ul>
+            <!--<li style="font-size:large">餐费：<input v-model.number="food" /></li>
+            <li style="font-size:large">饮料：<input v-model.number="drink" /></li>
+            <li style="font-size:large">话费：<input v-model.number="telephoneBill" /></li>
+            <li style="font-size:large">其他：<input v-model.number="other" /></li>-->
+            <li style="font-size:large">{{list[0].name}} :<input v-model.number="list[0].money" /></li>
+            <li style="font-size:large">{{list[1].name}} :<input v-model.number="list[1].money" /></li>
+            <li style="font-size:large">{{list[2].name}} :<input v-model.number="list[2].money" /></li>
+            <li style="font-size:large">{{list[3].name}} :<input v-model.number="list[3].money" /></li>
+        </ul>
+        <!--<h2>总计：{{(food+drink+telephoneBill+other)}}元 </h2>
+        <h2>本月消费超支情况：{{(food+drink+telephoneBill+other)>1000?"超支":"未超支"}} </h2>-->
+        <h2>总计：{{sum}}元 </h2>
+        <h2>本月消费超支情况：{{overspend}} </h2>
+        <!--<h2>总计：{{sum()}}元 </h2>
+        <h2>本月消费超支情况：{{overspend()}} </h2>-->
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: '我本月的生活费清单',
+                // food: 500,
+                // drink: 100,
+                // telephoneBill: 100,
+                // other: 100
+                list: [{
+                    name: "food",
+                    money: 500
+                }, {
+                    name: "drink",
+                    money: 100
+                }, {
+                    name: "telephoneBill",
+                    money: 100
+                }, {
+                    name: "other",
+                    money: 100
+                }]
+            },
+            computed: {
+                // sum: function() {
+                //     return this.food + this.drink + this.telephoneBill + this.other;
+                // },
+                sum: function() {
+                    var sum = 0;
+                    for (i in this.list) {
+                        sum += this.list[i].money;
+                    }
+                    return sum;
+                },
+                overspend: function() {
+                    return this.sum > 1000 ? "超支" : "未超支";
+                }
+            }
+            // methods: {
+            //     sum: function() {
+            //         return this.food + this.drink + this.telephoneBill + this.other;
+            //     },
+            //     sum: function() {
+            //         var sum = 0;
+            //         for (i in this.list) {
+            //             sum += this.list[i].money;
+            //         }
+            //         return sum;
+            //     },
+            //     overspend: function() {
+            //         return this.sum > 1000 ? "超支" : "未超支";
+            //     }
+            // }
+        })
+    </script>
+</body>
+
+</html>

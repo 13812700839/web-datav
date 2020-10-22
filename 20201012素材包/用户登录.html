@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="app" style="margin-left: 50px;">
+    <h3>用户登录</h3>
+    用户名：<input  type="text" v-model="username"/><br /><br />
+    密码：<input  type="text" v-model="pwd"/><br /><br />
+    
+            
+    </div>
+</body>
+<script>
+    var vm=new Vue({
+        el: "#app",
+        data:{                          
+                    username:"",
+                    pwd:""                             
+            }
+    })
+</script>
+</html>

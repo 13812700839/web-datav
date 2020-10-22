@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        消&nbsp;费&nbsp;项&nbsp;&nbsp;：<input v-model.lazy="newList.name"><br> 消费金额：
+        <input v-model.number.lazy="newList.money"><button type="button" @click="addNewList()
+        ">Add</button>
+        <ul>
+            <li v-for="item in list" style="font-size:large">{{item.name}} :<input v-model.number.lazy="item.money" /></li>
+        </ul>
+        <h2>总计：{{sum}}元 </h2>
+        <h2>本月消费超支情况：{{overspend}} </h2>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: '我本月的生活费清单',
+                newList: {
+                    name: '',
+                    money: 0
+                },
+                list: [{
+                    name: "food",
+                    money: 500
+                }, {
+                    name: "drink",
+                    money: 100
+                }, {
+                    name: "telephoneBill",
+                    money: 100
+                }, {
+                    name: "other",
+                    money: 100
+                }]
+            },
+            computed: {
+                sum: function() {
+                    var sum = 0;
+                    for (item of this.list) {
+                        sum += item.money;
+                    }
+                    return sum;
+                },
+                overspend: function() {
+                    return this.sum > 1000 ? "超支" : "未超支";
+                }
+            },
+            methods: {
+                addNewList: function() {
+                    this.list.push(this.newList);
+                    this.newList = {
+                        name: '',
+                        money: 0
+                    };
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
