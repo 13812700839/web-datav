@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <add-like></add-like>
+        <my-component></my-component>
+    </div>
+
+</body>
+<script>
+    // 全局组件
+    Vue.component('my-component',{
+        template:'<div>我是一个组件</div>'
+    });
+    Vue.component('add-like',{
+        template:'<div>点赞数:{{count}}<button @click="addlike">点赞</button></div>',
+        data: function(){
+            return {
+                count:0
+            }
+        },
+        methods: {
+            addlike: function(){
+                this.count++;
+            }
+        }
+    });
+    var vm=new Vue({
+        el: "#app",
+    })
+	
+
+</script>
+
+</html>
