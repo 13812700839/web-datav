@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>工人基本信息</h3>
+        姓名：<input/>年龄：<input/></br>
+        车辆：<input/>评分：<input/> 
+        <button id="btnAdd">添加</button>
+        </br>
+        <h3>车辆维修工人列表</h3>
+        <table>
+         <thead>
+          <tr >
+           <th>序号</th>
+           <th>姓名</th>
+           <th>年龄</th>
+           <th>维修车辆</th>
+           <th>客户评分</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr v-for="(worker,index) in workers">    
+                <td> {{index+1}}</td>
+                <td> {{worker.name}}</td>
+                <td> {{worker.age}}</td>
+                <td> {{worker.number}}</td>
+                <td> {{worker.score}}</td> 
+          </tr>
+
+         </tbody>
+        </table>
+      </div>  
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+                 //此处定义维修工人车辆数据
+                 workers:[
+                     {name:"王艺",age:40,number:23,score:9.5},
+                     {name:"张祥",age:28,number:30,score:8.5},
+                     {name:"李飞",age:32,number:50,score:8.0},
+                     {name:"赵海",age:42,number:32,score:8.5}                    
+                 ]
+              }
+        //在此定义方法
+    })
+</script>
+</html>

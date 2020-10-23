@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1> 
+        消费项目：<input  />  消费金额：<input  /> 
+        <button>添加</button> 
+        <ul>
+            <li style="font-size:24px" v-for="(item,index) in list">
+                {{item.name}}：{{item.money}} 
+            </li>            
+        </ul>
+        
+        <h2>消费项目总计：{{list.length}} </h2>   
+        <h2>消费金额总计：{{sum}}元 </h2>
+        <div style="font-size:24px">消费超支情况：
+            <span v-if="sum>1000" style="color:red"> 超支</span>
+            <span v-else style="color:green"> 未超支</span>
+        </div> 
+        
+    </div>
+    <script>
+        var vm=new Vue({
+            el: "#app",
+            data: { title:'我本月的生活费清单',
+                       count:0,                   
+                    list:[
+                        {name:"餐费",money:500},
+                        {name:"饮料",money:300},
+                        {name:"话费",money:200},
+                        {name:"其他",money:100}          
+                    ]
+            },
+            computed:{
+                sum:function(){
+                    var s=0;
+                    for(var i=0;i<this.list.length;i++){
+                        s += this.list[i].money;
+                    }
+                    return s;
+                }
+            }
+        })
+    </script>
+</body>
+</html> 

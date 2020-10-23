@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        点赞数:{{count}}<button @click="addlike">点赞</button>
+       
+    </div>
+
+</body>
+<script>
+    
+    var vm=new Vue({
+        el: "#app",
+        data:{
+            count:0
+        },
+        methods:{
+            addlike:function()
+            {
+                this.count++;
+            }
+        }
+               
+    })
+	
+
+</script>
+</html>

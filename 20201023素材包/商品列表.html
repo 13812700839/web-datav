@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/vue.js"></script>
+    <title>Document</title>
+    <style>
+        body,
+        h2 {
+            margin: 0;
+        }
+        
+        .wrap {
+            width: 880px;
+            margin: 0 auto;
+        }
+        
+        .wrap:after {
+            content: '';
+            display: block;
+        }
+        
+        .box {
+            width: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            float: left;
+            margin: 10px;
+        }
+        
+        .box img {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .box h2 {
+            text-align: center;
+            font-weight: normal;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2 @click="show1">电脑</h2>
+        <h2 @click="show2">手机</h2>
+        <div class="wrap" v-if="showcomputer">
+            <!--这里显示电脑商品-->
+            <shop-list v-for="item in computer" :mytitle="item.title" :myimg="item.img"></shop-list>
+        </div>
+
+        <div class="wrap" v-if="showphone">
+            <!--这里显示手机商品-->
+            <shop-list v-for="item in phone" :mytitle="item.title" :myimg="item.img"></shop-list>
+        </div>
+    </div>
+
+</body>
+<script>
+    Vue.component('shop-list', {
+        props: ['myimg', 'mytitle'],
+        template: '<div class="box">\
+                        <img :src="myimg" alt="">\
+                        <h2>{{mytitle}}</h2>\
+                    </div>',
+    });
+
+
+    new Vue({
+        el: '#app',
+        data: {
+            computer: [{
+                img: 'img/2001.jpg',
+                title: '戴尔笔记本'
+            }, {
+                img: 'img/2002.jpg',
+                title: '华为笔记本'
+            }, {
+                img: 'img/2003.jpg',
+                title: '小米笔记本'
+            }, {
+                img: 'img/2004.jpg',
+                title: '微软笔记本'
+            }],
+            phone: [{
+                img: 'img/1001.jpg',
+                title: '华为手机'
+            }, {
+                img: 'img/1002.png',
+                title: '小米手机'
+            }, {
+                img: 'img/1003.jpg',
+                title: 'OPPO手机'
+            }, {
+                img: 'img/1004.jpg',
+                title: '苹果手机'
+            }],
+            showcomputer: true,
+            showphone: true
+
+        },
+        methods: {
+            show1: function() {
+                this.showcomputer = !this.showcomputer;
+            },
+            show2: function() {
+                this.showphone = !this.showphone;
+            }
+
+        }
+    })
+</script>
+
+</html>
