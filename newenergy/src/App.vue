@@ -14,11 +14,10 @@
             </p>
           </div>
           <ul class="menu" ref="singleDom">
-            <li class="list active"><router-link to="/dataScreen">数据大屏</router-link></li>
-            <li class="list"><router-link to="/dataStatistics">统计分析</router-link></li>
-            <li class="list"><router-link to="/realTimeMonitoring">单车监控</router-link></li>
-            <li class="list"><router-link to="/vehicleManagement">车辆管理</router-link></li>
-            <li class="list"><router-link to="/userManagement">用户管理</router-link></li>
+            <li v-for="(item,index) in yanfa" :key="index" @click="goto(index, item)"
+                :class="{'list':true, 'active':item.show}">
+              <router-link :to="item.url">{{ item.name }}</router-link>
+            </li>
           </ul>
           <router-view></router-view>
         </el-tab-pane>
@@ -81,9 +80,47 @@ import './assets/style/table.css' // 本页面所使用Css样式引入
 
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       activeName: 'first',
+      yanfa: [
+        {
+          name: '数据大屏',
+          url: 'dataScreen',
+          show: true
+        },
+        {
+          name: '统计分析',
+          url: 'dataStatistics',
+          show: false
+        },
+        {
+          name: '单车监控',
+          url: 'realTimeMonitoring',
+          show: false
+        },
+        {
+          name: '车辆管理',
+          url: 'vehicleManagement',
+          show: false
+        },
+        {
+          name: '用户管理',
+          url: 'userManagement',
+          show: false
+        }
+      ]
+    }
+  },
+  methods: {
+    goto(i, item) {
+      // item.show = !item.show;
+      item.show = true;
+      for (var j = 0; j < this.yanfa.length; j++) {
+        if (j !== i) {
+          this.yanfa[j].show = false;
+        }
+      }
     }
   }
 }
