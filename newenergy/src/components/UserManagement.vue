@@ -5,15 +5,15 @@
         <div class="searchInputBox">
           <div class="inputItem pr">
             <p class="searchName">用户名</p>
-            <el-input size="small" :value="searchData.UserName" class="basicInput" clearable></el-input>
+            <el-input size="small" v-model="searchData.UserName" class="basicInput" clearable></el-input>
           </div>
           <div class="inputItem pr">
             <p class="searchName">真实姓名</p>
-            <el-input size="small" :value="searchData.RealName" class="basicInput" clearable></el-input>
+            <el-input size="small" v-model="searchData.RealName" class="basicInput" clearable></el-input>
           </div>
           <div class="inputItem pr">
             <p class="searchName">手机号</p>
-            <el-input size="small" :value="searchData.Telephone" class="basicInput" clearable></el-input>
+            <el-input size="small" v-model="searchData.Telephone" class="basicInput" clearable></el-input>
           </div>
           <div class="inputItem pr">
             <p class="searchName">公司</p>
@@ -46,11 +46,49 @@
             <el-button type="primary" class="basicBtn basicBlueBtn">查询</el-button>
           </div>
         </div>
-<!--        <div>用户名：{{searchData.UserName}}真实姓名：{{searchData.RealName}}电话：{{searchData.Telephone}}公司：{{searchData.Company}}状态：{{ searchData.State}}部门：{{searchData.Dept}}</div>-->
+        <!--        <div>用户名：{{searchData.UserName}}真实姓名：{{searchData.RealName}}电话：{{searchData.Telephone}}公司：{{searchData.Company}}状态：{{ searchData.State}}部门：{{searchData.Dept}}</div>-->
       </div>
       <div class="vehicleInfo">
-        <el-button size="small">新增用户</el-button>
+        <el-button size="small" @click="dialogFormVisible=true">新增用户</el-button>
         <!-- 弹窗 -->
+        <el-dialog id="Dialog" title="新增用户" width="45%" :visible.sync="dialogFormVisible">
+          <el-form class="Form" :model="form"  label-width="20%" ref="form" :rules="rules">
+            <el-form-item label="用户名"  prop="UserName">
+              <el-input placeholder="请输入用户名" v-model="form.UserName"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="Password">
+              <el-input placeholder="请输入密码" v-model="form.Password"></el-input>
+            </el-form-item>
+            <el-form-item label="确认密码" prop="RePassword">
+              <el-input placeholder="请确认密码" v-model="form.RePassword"></el-input>
+            </el-form-item>
+            <el-form-item label="手机号码" prop="Telephone">
+              <el-input v-model="form.Telephone" placeholder="请输入手机号码"></el-input>
+            </el-form-item>
+            <el-form-item label="真实姓名" prop="RealName">
+              <el-input v-model="form.RealName" placeholder="请输入真实姓名"></el-input>
+            </el-form-item>
+            <el-form-item label="关联公司" prop="Company">
+              <el-select v-model="form.Company" placeholder="请选择关联公司">
+                <el-option label="公司1" value="Company1"></el-option>
+                <el-option label="公司2" value="Company2"></el-option>
+                <el-option label="公司3" value="Company3"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="关联部门" prop="Dept" >
+              <el-select v-model="form.Dept" placeholder="请选择关联部门">
+                <el-option label="部门1" value="Dept1"></el-option>
+                <el-option label="部门2" value="Dept2"></el-option>
+                <el-option label="部门3" value="Dept3"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible=false;resetForm('form')">取 消</el-button>
+            <el-button @click="resetForm('form')">重置</el-button>
+            <el-button type="primary" @click="submitForm('form')">确 定</el-button>
+          </div>
+        </el-dialog>
       </div>
       <div class="ba" style="margin-top:50px">
         <div class="tabItem">
@@ -92,6 +130,7 @@ export default {
   name: "UserManagement",
   data() {
     return {
+      pagename: "当前位置：用户管理",        //页面标题
       searchData: {               //查询数据
         UserName: "testusername",           //用户姓名
         RealName: "测试姓名",                //真实姓名
@@ -100,8 +139,63 @@ export default {
         State: "all",                      //状态
         Dept: "all"                           //部门
       },
-      tableData: []
+      tableData: [],
+      dialogFormVisible: false,
+      form:{
+        UserName: "",           //用户姓名
+        Password: "",           //用户密码
+        RePassword: "",         //确认密码
+        Telephone: "",          //电话
+        RealName: "",           //真实姓名
+        Company: "",            // 公司名称
+        Dept: ""                //部门
+      },
+      rules:{
+        UserName:[
+          { required: true, message: "请输入用户名", trigger: "blur"},
+          { pattern: /^[a-zA-Z0-9]{6,16}$/, message:'用户名格式错误', trigger: "blur"}
+        ],
+        Password:[
+          { required: true, message: "请输入密码",trigger: "blur"},
+          { pattern: /[a-zA-Z\d+]{6,16}/, message:'密码格式错误',trigger:'blur'}
+        ],
+        RePassword:[
+          { required: true, message: "请输入确认密码", trigger: "blur"},
+
+        ],
+        Telephone:[
+          { required: true, message: "请输入电话号码", trigger: "blur"},
+          { pattern: /^1[3|4|5|7|8][0-9]{9}$/, message: "电话号码格式错误", trigger: "blur"}
+        ],
+        RealName:[
+          { required: true, message: "请输入真实姓名", trigger: "blur"},
+          { pattern: /^[A-Za-z0-9\u4e00-\u9fa5]{1,16}$/, message: "真实姓名格式错误", trigger: "blur"}
+        ],
+        Company:[
+          { required: true, message: '请选择关联运营公司', trigger: 'change' },
+        ],
+        Dept:[
+          { required: true, message: '请选择关联部门', trigger: 'change' },
+        ],
+      }
     };
+  },
+  methods: {
+    // 表单提交
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('信息提交成功！');
+        } else {
+          console.log('表单提交失败！');
+          return false;
+        }
+      });
+    },
+    // 重置表单
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
   },
   mounted(){
     this.axios('../../static/json/userlist.json').then(res => {
