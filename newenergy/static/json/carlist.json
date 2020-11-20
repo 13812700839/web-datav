@@ -1,0 +1,41 @@
+{
+    "carlist":[
+        {
+            "index":"1",
+            "CarVIN":"LA9HIGECXH1HGC007",
+            "CarNumber": "渝A 65301",
+            "Company":"海格车企",
+            "Carline":"车队1",
+            "OutComDate":"2018-03-15",
+            "RegDate":"2018-03-15",
+            "CurrKm":"34,152km",
+            "BadCount":"32",
+            "Status":"启用"
+        },
+        {
+            "index":"2",
+            "CarVIN":"LA9HIGECXH1HGC008",
+            "CarNumber": "渝A 65302",
+            "Company":"海格车企",
+            "Carline":"车队1",
+            "OutComDate":"2018-03-15",
+            "RegDate":"2018-03-15",
+            "CurrKm":"34,152km",
+            "BadCount":"32",
+            "Status":"启用"
+        },
+        {
+            "index":"2",
+            "CarVIN":"LA9HIGECXH1HGC009",
+            "CarNumber": "渝A 65303",
+            "Company":"海格车企",
+            "Carline":"车队1",
+            "OutComDate":"2018-03-15",
+            "RegDate":"2018-03-15",
+            "CurrKm":"34,152km",
+            "BadCount":"32",
+            "Status":"启用"
+        }
+
+    ]
+}
